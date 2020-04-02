@@ -7,22 +7,22 @@ import { animated , useTransition } from 'react-spring'
 import * as Styled from './ResetStyle';
 
 const Root = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
+    segoe ui, arial, sans-serif;
+  background: transparent;
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
-  flex-direction: column;
   align-items: center;
   color: white;
-`
-
-const NextButton = styled.button`
+  cursor: pointer;
+  position: absolute;
   color: white;
   font-weight: 800;
-  font-size: 40em;
+  font-size: 25em;
   will-change: transform, opacity;
   text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
-  background: none;
 `
 
 const A = styled(Root)`
@@ -51,10 +51,8 @@ const FloatButton = styled.button`
   width: 100px;
   border-radius: 50%;
   position: absolute;
-  top: 50;
-  bottom: 0;
-  left: 50;
-  right: 0;
+  bottom: 30px;
+  right: 30px;
   margin: auto;
 `
 
@@ -66,10 +64,10 @@ const App: React.FC = () => {
     leave: {opacity: 0, transform: 'translate3d(-50%,0,0)'},
   });
   
-  const PageStart = () => <Root><NextButton><Link to={'/A'}>Start</Link></NextButton></Root>
-  const PageA = () => <A><NextButton><Link to={'/B'}>A</Link></NextButton></A>
-  const PageB = () => <B><NextButton><Link to={'/C'}>B</Link></NextButton></B>
-  const PageC = () => <C><NextButton><Link to={'/A'}>C</Link></NextButton></C>
+  const PageStart = () => <Root><Link to={'/A'}>Start</Link></Root>
+  const PageA = () => <A><Link to={'/B'}>A</Link></A>
+  const PageB = () => <B><Link to={'/C'}>B</Link></B>
+  const PageC = () => <C><Link to={'/A'}>C</Link></C>
   const PageError = () => <Error>Error</Error>
 
   return (
