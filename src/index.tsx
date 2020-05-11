@@ -11,18 +11,20 @@ const Root = styled.div`
     segoe ui, arial, sans-serif;
   background: transparent;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  color: white;
-  cursor: pointer;
   position: absolute;
-  color: white;
-  font-weight: 800;
-  font-size: 25em;
+  font-size: 30em;
   will-change: transform, opacity;
   text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
+  -webkit-overflow-scrolling: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+       display: none;
+    }
 `
 
 const A = styled(Root)`
@@ -53,7 +55,6 @@ const FloatButton = styled.button`
   position: absolute;
   bottom: 30px;
   right: 30px;
-  margin: auto;
 `
 
 const App: React.FC = () => {
@@ -83,6 +84,7 @@ const App: React.FC = () => {
           </Switch>
         </animated.div>
       ))}
+      {location.pathname !== '/' ? <Link to={'/'}><FloatButton>/</FloatButton></Link> : <></>}
     </>
   );
 }
@@ -91,7 +93,6 @@ ReactDOM.render(
     <BrowserRouter>
       <Styled.Global /> 
       <App />
-      <Link to={'/'}><FloatButton>/</FloatButton></Link>
     </BrowserRouter>,
     document.getElementById('root')
 );
